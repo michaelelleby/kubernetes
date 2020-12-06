@@ -37,6 +37,10 @@ resource "azurerm_key_vault_secret" "example" {
   name         = "secret-sauce"
   value        = "szechuan"
   key_vault_id = azurerm_key_vault.vault.id
+
+  depends_on = [ 
+    azurerm_key_vault_access_policy.user
+   ]
 }
 
 resource "azurerm_role_assignment" "reader" {
